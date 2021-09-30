@@ -56,15 +56,9 @@ class NetworkAlbertNER(object):
         self.input_ids_sequence_length = tf.count_nonzero(output_layer_init,
                                                           axis=2,
                                                           dtype=tf.int32)
-
-
-
+        
         self.input_ids_length = tf.count_nonzero(self.input_ids_sequence_length,
                                                  axis=1, dtype=tf.int32)
-
-#        self.input_ids_length = tf.count_nonzero(self.input_ids,
-#                                                 axis=1,
-#                                                 dtype=tf.int32)
 
         # print('input_ids_sequence_length:',self.input_ids_sequence_length) #(?, 200)
         print('input_ids_length:', self.input_ids_length)  # (?,)
