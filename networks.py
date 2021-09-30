@@ -60,13 +60,6 @@ class NetworkAlbertNER(object):
         self.input_ids_length = tf.count_nonzero(self.input_ids_sequence_length,
                                                  axis=1, dtype=tf.int32)
 
-        # print('input_ids_sequence_length:',self.input_ids_sequence_length) #(?, 200)
-        print('input_ids_length:', self.input_ids_length)  # (?,)
-
-        print('self.logits:', self.logits)  # (?, 200, 2)
-        print('self.label_ids:', self.label_ids)  # (?, 200)
-        print('self.input_ids_length:', self.input_ids_length)  # (?,)
-
         self.log_likelihood, self.transition_params = tf.contrib.crf.crf_log_likelihood(self.logits,
                                                                                         self.label_ids,
                                                                                         self.input_ids_length)
